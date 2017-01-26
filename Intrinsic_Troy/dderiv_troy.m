@@ -108,7 +108,7 @@ end
 if (tempom < om)
   frequency = frequency(end:-1:1,:);
   pD        = pD(end:-1:1,:);
-  pDimag    = pDimag(end:-1:1,:);
+  %pDimag    = pDimag(end:-1:1,:);
   pDel      = pDel(end:-1:1,:);
   pLam      = pLam(end:-1:1,:);
   pDD       = pDD(end:-1:1,:);

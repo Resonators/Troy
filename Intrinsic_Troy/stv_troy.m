@@ -2,17 +2,17 @@
 %
 
 lam = lambda;
-max = floor(maxl/2)+1;
+maximum = floor(maxl/2)+1;
 vec = [];
 dvec = [];
 ddvec = [];
 
 % Use Millers algorithm to evaluate the recurrence stably downwards.
 
-vec(1:max+2) = 0.;
-vec(max+1)=1.0;
+vec(1:maximum+2) = 0.;
+vec(maximum+1)=1.0;
 norm = 0.;
-for j = max+1:-1:2
+for j = maximum+1:-1:2
   n = 2*(j-1);
   tempn2 = (2*n+1)*(1-(3.*lam/2)/((2*n+3)*(2*n-1)))*vec(j);
   tempn4 = (3.*lam/2.)*((n+2)/(2*n+3))*vec(j+1);
@@ -23,7 +23,7 @@ end
 
 norm = sqrt(norm);
 vec = vec/norm;
-svec = vec(1:max);
+svec = vec(1:maximum);
 
 % compute the derivative of the starting vector in terms of the starting
 % vector, using the contraction formula for Legendre Polynomials:
@@ -36,9 +36,9 @@ svec = vec(1:max);
 % The first derivative is a little easier to deal with.
 % Take care of boundary case first
 
-dvec(1:max) = 0;
+dvec(1:maximum) = 0;
 dvec(1) = vec(2);
-for j = 2:max
+for j = 2:maximum
   n = 2*(j-1);
   dvec(j) = ((2*n+5)*wigner3j(2*n,4,2*(n+2),0,0,0)^2*vec(j+1) ...
            +(2*n+1)*wigner3j(2*n,4,2*n,0,0,0)^2*vec(j) ...
@@ -50,7 +50,7 @@ end
 % there are just more terms.
 % Take care of boundary cases first.
 
-ddvec(1:max) = 0;
+ddvec(1:maximum) = 0;
 ddvec(1) = (81*wigner3j(0,8,8,0,0,0)^2*wigner3j(4,4,8,0,0,0)^2*vec(3) ...
           +25*wigner3j(0,4,4,0,0,0)^2*wigner3j(4,4,4,0,0,0)^2*vec(2) ...
 	    + 1*wigner3j(4,4,0,0,0,0)^2*vec(1))/4;
@@ -88,7 +88,7 @@ ddvec(4) = (( 21*wigner3j(12,8,20,0,0,0)^2*vec(6) ...
            *5*wigner3j(4,4,4,0,0,0) ...
 	    +1*wigner3j(4,4,0,0,0,0)^2*vec(4))/4;
 
-for j = 5:max
+for j = 5:maximum
   n = 2*j;
   temp4 =  (2*n+9)*wigner3j(2*n,8,2*(n+4),0,0,0)^2*vec(j+2) ...
        	  +(2*n+5)*wigner3j(2*n,8,2*(n+2),0,0,0)^2*vec(j+1) ...

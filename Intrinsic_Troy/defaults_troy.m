@@ -5,9 +5,14 @@ Diff   = 1e7;      % rotational diffusion parameter
 T2inv  = 3e5;      % intrinsic linewidth
 
 % Set magnetic parameters in frequency units
+% g0=2.0067;
+% g2=-.00658;
+% gpar=g0 - 2*g2/3;
+% gprp=g0 + g2/3;
 
-gpar = 2.002;      % parallel component of the g tensor
-gprp = 2.007;      % perpendicular component of the g tensor
+
+%gpar = 2.002;      % parallel component of the g tensor
+%gprp = 2.007;      % perpendicular component of the g tensor
 B0   = 1.2;        % magnetic field in Tesla
 
 pts  = 512;        % number of spectral points to compute
@@ -21,4 +26,4 @@ pts  = 512;        % number of spectral points to compute
 F     = (2*(gpar-gprp)/3)*(9.274009e-24/1.054e-34)*B0;  
 Delta = (3/2)*F;                                        
 om0   = ((gpar+2*gprp)/3)*(9.274009e-24/1.054e-34)*B0;   
-om    = om0 - 1.5*F;  
+om    = om0 - 1*F;  
